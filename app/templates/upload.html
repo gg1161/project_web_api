@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Загрузка файлов{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h2>Загрузка файлов</h2>
+
+        <form method="POST" enctype="multipart/form-data" class="mb-4">
+            <div class="mb-3">
+                <label for="file" class="form-label">Выберите файл:</label>
+                <input type="file" class="form-control" id="file" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Загрузить файл</button>
+        </form>
+
+        <h4>Ваши загруженные файлы:</h4>
+        {% if files %}
+            <ul class="list-group">
+                {% for file in files %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ file.filename }}
+                <a href="{{ url_for('uploaded_file', filename=file.filename) }}"
+                   class="btn btn-sm btn-outline-primary">
+            <i class="bi bi-download"></i> Скачать
+                </a>
+            </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">У вас пока нет загруженных файлов.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

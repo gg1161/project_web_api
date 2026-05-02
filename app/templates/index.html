@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Добро пожаловать в моё приложение для просмотра погоды!</h1>
+    {% if current_user.is_authenticated %}
+        <p>Привет, {{ current_user.username }}! Вы можете:</p>
+        <ul class="list-unstyled mt-4">
+            <li><a href="{{ url_for('profile') }}" class="btn btn-outline-primary mb-2">Мой профиль</a></li>
+            <li><a href="{{ url_for('weather') }}" class="btn btn-outline-info mb-2">Посмотреть погоду</a></li>
+        </ul>
+    {% else %}
+        <p class="mt-4">Пожалуйста, <a href="{{ url_for('login') }}">войдите</a> или <a href="{{ url_for('register') }}">зарегистрируйтесь</a>.</p>
+    {% endif %}
+</div>
+{% endblock %}
