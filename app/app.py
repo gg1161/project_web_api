@@ -94,7 +94,7 @@ def create_app():
 
         if request.method == 'POST':
             city = request.form.get('city', 'Moscow')
-            api_key = 'f362f942-8e2f-4a77-87bc-557b6c4773c4'
+            api_key = 'fa0f11a5-fd86-48c2-b07f-ef6e45a933a8'
             city_coordinates = {
                 'Moscow': '55.7558,37.6173',
                 'Saint Petersburg': '59.9343,30.3351',
